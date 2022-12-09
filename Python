@@ -1,0 +1,35 @@
+def isLeapyear(year):
+    return (((year % 4 == 0) and (year % 100 != 0)) or (year % 400 == 0))
+leap=[]
+def leapyearList(s,e):
+    print("The Leap years are:")
+    for i in range(s,e,4):
+        print(i)
+        leap.append(i)
+        
+def nonLeapyearList(s,e):
+    print("The Non Leap years are:")
+    for i in range(s,e):
+        if(i not in leap):
+            print(i)
+        else:
+            continue
+    
+start=(input('Enter a start date').split('/'))
+end=(input('Enter end date').split('/'))
+s=int(start[-1])
+e=int(end[-1])
+ns=s+4
+#print(s)
+#print(e)
+if(isLeapyear(s)):
+    leapyearList(s,e)
+    nonLeapyearList(s,e)
+else:
+    for i in range(s,ns+1):
+        if(isLeapyear(i)):
+            leapyearList(i,e)
+            nonLeapyearList(s,e)
+            break
+        else:
+            continue
